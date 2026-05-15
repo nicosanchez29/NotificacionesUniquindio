@@ -1,6 +1,8 @@
 package co.edu.uniquindio.poo.model;
 
-public class NotificacionEmail {
+import javax.swing.*;
+
+public class NotificacionEmail implements iTipoNotificacion {
 
     //ATRIBUTOS
 
@@ -33,4 +35,46 @@ public class NotificacionEmail {
                 "email='" + email + '\'' +
                 '}';
     }
+
+    //METODOS
+
+    @Override
+    public void enviarNotificacion() {
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Correo enviado correctamente a:\n"
+                        + email
+        );
+    }
+
+    // METODO 2
+    @Override
+    public EstadoNoticia obtenerEstado() {
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Estado: ENVIADA"
+        );
+
+        return EstadoNoticia.ENVIADA;
+    }
+
+    // METODO 3
+    @Override
+    public String generarMensaje() {
+
+        String mensaje =
+                "Mensaje generado por EMAIL";
+
+        JOptionPane.showMessageDialog(
+                null,
+                mensaje
+        );
+
+        return mensaje;
+    }
+
+
 }
+

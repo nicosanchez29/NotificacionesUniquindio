@@ -1,6 +1,8 @@
 package co.edu.uniquindio.poo.model;
 
-public class NotificacionSMS {
+import javax.swing.*;
+
+public class NotificacionSMS implements iTipoNotificacion{
 
 
     //ATRIBUTOS
@@ -27,5 +29,42 @@ public class NotificacionSMS {
         return "NotificacionSMS{" +
                 "numeroTelefono='" + numeroTelefono + '\'' +
                 '}';
+    }
+
+    @Override
+    public void enviarNotificacion() {
+
+        JOptionPane.showMessageDialog(
+                null,
+                "SMS enviado al número:\n"
+                        + numeroTelefono
+        );
+    }
+
+
+    @Override
+    public EstadoNoticia obtenerEstado() {
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Estado: ENVIADA"
+        );
+
+        return EstadoNoticia.ENVIADA;
+    }
+
+
+    @Override
+    public String generarMensaje() {
+
+        String mensaje =
+                "Mensaje generado por SMS";
+
+        JOptionPane.showMessageDialog(
+                null,
+                mensaje
+        );
+
+        return mensaje;
     }
 }

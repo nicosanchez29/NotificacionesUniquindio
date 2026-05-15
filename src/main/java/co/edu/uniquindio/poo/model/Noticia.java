@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.model;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Noticia {
@@ -8,23 +9,31 @@ public class Noticia {
 
     private String titulo;
     private String descripcion;
+    private String etiqueta;
 
     //RELACIONES
-    private ArrayList<String> listaEtiquetas;
     private EstadoNoticia estado;
 
     //CONSTRUCTOR
 
-
-    public Noticia(String titulo, String descripcion, EstadoNoticia estado) {
+    public Noticia(String titulo, String descripcion, String etiqueta, EstadoNoticia estado) {
         this.titulo = titulo;
         this.descripcion = descripcion;
+        this.etiqueta = etiqueta;
         this.estado = estado;
-        this.listaEtiquetas = new ArrayList<>();
     }
+
 
     //SETTERS Y GETTERS
 
+
+    public String getEtiqueta() {
+        return etiqueta;
+    }
+
+    public void setEtiqueta(String etiqueta) {
+        this.etiqueta = etiqueta;
+    }
 
     public String getTitulo() {
         return titulo;
@@ -42,13 +51,6 @@ public class Noticia {
         this.descripcion = descripcion;
     }
 
-    public ArrayList<String> getListaEtiquetas() {
-        return listaEtiquetas;
-    }
-
-    public void setListaEtiquetas(ArrayList<String> listaEtiquetas) {
-        this.listaEtiquetas = listaEtiquetas;
-    }
 
     public EstadoNoticia getEstado() {
         return estado;
@@ -66,10 +68,21 @@ public class Noticia {
         return "Noticia{" +
                 "titulo='" + titulo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                ", listaEtiquetas=" + listaEtiquetas +
+                ", etiqueta='" + etiqueta + '\'' +
                 ", estado=" + estado +
                 '}';
     }
 
+    public void actualizarEstado(
+            EstadoNoticia estado
+    ) {
 
+        this.estado = estado;
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Estado actualizado a: "
+                        + estado
+        );
+    }
 }

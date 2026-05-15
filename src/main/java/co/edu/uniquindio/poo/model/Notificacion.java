@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.model;
 
+import javax.swing.*;
 import java.time.LocalDate;
 
 public class Notificacion {
@@ -11,7 +12,7 @@ public class Notificacion {
 
     //REALCIONES
     private Noticia noticia;
-    private iTipoNotificacion itipoNotificacion;
+    private iTipoNotificacion tipoNotificacion;
 
     //CONSTRUCTOR
 
@@ -20,7 +21,7 @@ public class Notificacion {
         this.estado = estado;
         this.fechaEnvio = fechaEnvio;
         this.noticia = noticia;
-        this.itipoNotificacion = itipoNotificacion;
+        this.tipoNotificacion = tipoNotificacion;
     }
 
     //SETTERS Y GETTERS
@@ -51,11 +52,11 @@ public class Notificacion {
     }
 
     public iTipoNotificacion getItipoNotificacion() {
-        return itipoNotificacion;
+        return tipoNotificacion;
     }
 
     public void setItipoNotificacion(iTipoNotificacion itipoNotificacion) {
-        this.itipoNotificacion = itipoNotificacion;
+        this.tipoNotificacion = itipoNotificacion;
     }
 
     //METODO TOSTRING
@@ -67,7 +68,63 @@ public class Notificacion {
                 "estado='" + estado + '\'' +
                 ", fechaEnvio=" + fechaEnvio +
                 ", noticia=" + noticia +
-                ", itipoNotificacion=" + itipoNotificacion +
+                ", itipoNotificacion=" + tipoNotificacion +
                 '}';
     }
+
+
+    public void enviarNotificacion() {
+
+        tipoNotificacion.enviarNotificacion();
+
+        EstadoNoticia estadoActual =
+                tipoNotificacion.obtenerEstado();
+
+        noticia.actualizarEstado(estadoActual);
+
+        this.estado = estadoActual.name();
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Notificación enviada correctamente\n"
+                        + "Estado: " + estado
+        );
+    }
+
+
+    public EstadoNoticia obtenerEstado() {
+
+        EstadoNoticia estadoActual =
+                tipoNotificacion.obtenerEstado();
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Estado actual de la noticia: "
+                        + estadoActual
+        );
+
+        return estadoActual;
+    }
+
+
+    public String generarMensaje() {
+
+        String mensaje =
+                tipoNotificacion.generarMensaje()
+                        + "\n\nTitulo: "
+                        + noticia.getTitulo()
+                        + "\nDescripcion: "
+                        + noticia.getDescripcion();
+
+        JOptionPane.showMessageDialog(
+                null,
+                mensaje
+        );
+
+        return mensaje;
+    }
+
+
+
+
 }

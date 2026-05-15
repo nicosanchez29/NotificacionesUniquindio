@@ -47,5 +47,14 @@ public class Uniquindio {
                 '}';
     }
 
-    //CRUD DE OFICINA DE PUBLICACIONES
+
+    public void agregarOficinaPublicaciones(OficinaPublicaciones oficinaPublicaciones) {
+        if (this.oficinaPublicaciones != null) {
+            throw new IllegalStateException("Ya existe una oficina de publicaciones");
+        }
+        this.oficinaPublicaciones = oficinaPublicaciones;
+    }
+
+
 }
+
